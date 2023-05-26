@@ -1,0 +1,301 @@
+CREATE TABLE dept_copy_tab
+(
+  deptno        NUMBER,
+  dname         VARCHAR2(50),
+  mgr_id        NUMBER(10),
+  location_id       NUMBER(10)
+);
+CREATE TABLE dept_tab
+(
+  deptno        NUMBER(5),
+  dname         VARCHAR2(50),
+  mgr_id        NUMBER(10),
+  location_id       NUMBER(10),
+  CONSTRAINT pk_dept_tab PRIMARY KEY (deptno)
+);
+CREATE TABLE emp_tab
+(  
+  empno             NUMBER,  
+  name              VARCHAR2(50) NOT NULL,  
+  job               VARCHAR2(50),  
+  manager           NUMBER(10),  
+  hiredate          DATE,  
+  salary            NUMBER(10,2),  
+  commission        NUMBER(10,2),  
+  deptno            NUMBER(5),  
+  CONSTRAINT pk_emp_tab PRIMARY KEY (empno),  
+  CONSTRAINT fk_emp_tab_deptno FOREIGN KEY (deptno)
+  REFERENCES dept_tab(deptno)  
+);
+CREATE TABLE old_emp_tab
+(  
+  empno             NUMBER,  
+  name              VARCHAR2(50) not null,  
+  job               VARCHAR2(50),  
+  manager           NUMBER(10),  
+  hiredate          DATE,  
+  salary            NUMBER(10,2),  
+  commission        NUMBER(10,2),  
+  deptno            NUMBER(5)
+);
+-- SQLite
+CREATE TABLE USER(
+   ID INT PRIMARY KEY     NOT NULL,
+   NAME           TEXT    NOT NULL
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 30
+   , 'Purchasing'
+   , 114
+   , 1700
+   );
+   
+   INSERT INTO dept_tab VALUES 
+   ( 40
+, 'Human Resources'
+   , 203
+   , 2400
+   );
+   
+   
+   
+   INSERT INTO dept_tab VALUES 
+   ( 70 
+   , 'Public Relations'
+   , 204
+   , 2700
+   );
+   
+   INSERT INTO dept_tab VALUES 
+   ( 80 
+   , 'Sales'
+   , 145
+   , 2500
+   );
+   
+   INSERT INTO dept_tab VALUES 
+   ( 90 
+   , 'Executive'
+   , 100
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 100 
+   , 'Finance'
+   , 108
+   , 1700
+   );
+   
+   INSERT INTO dept_tab VALUES 
+   ( 110 
+   , 'Accounting'
+   , 205
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 120 
+   , 'Treasury'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 130 
+   , 'Corporate Tax'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 140 
+   , 'Control And Credit'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 150 
+   , 'Shareholder Services'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 160 
+   , 'Benefits'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 170 
+   , 'Manufacturing'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 180 
+   , 'Construction'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 190 
+   , 'Contracting'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 200 
+   , 'Operations'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 210 
+   , 'IT Support'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 220 
+   , 'NOC'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 230 
+   , 'IT Helpdesk'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 240 
+   , 'Government Sales'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 250 
+   , 'Retail Sales'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 260 
+   , 'Recruiting'
+   , NULL
+   , 1700
+   );
+   
+INSERT INTO dept_tab VALUES 
+   ( 270 
+   , 'Payroll'
+   , NULL
+   , 1700
+   );   
+INSERT INTO emp_tab 
+VALUES(7001, 'KING', 'PRESIDENT', null,  
+ date('1981-11-17'), 5000, 1000, 40);
+
+INSERT INTO emp_tab 
+VALUES(7002, 'CLARK', 'MANAGER', 7001,  
+ date('1981-06-09'), 2450, 500, 40
+);
+
+INSERT INTO emp_tab 
+VALUES(7003, 'JONES', 'MANAGER', 7001,  
+ date('1981-04-02'),2975, 500, 30
+);
+
+INSERT INTO emp_tab
+ VALUES(7004, 'SCOTT', 'ANALYST', 7002,  
+ date('1987-08-13'), 3000, 300, 70
+);
+
+INSERT INTO emp_tab 
+VALUES(7005, 'FORD', 'ANALYST', 7002,  
+date('1981-12-03'),3000, 300, 30
+);
+
+INSERT INTO emp_tab
+ VALUES(7006, 'SMITH', 'CLERK', 7003,  
+ date('1980-12-17'),800, 200, 30
+);
+
+INSERT INTO emp_tab 
+VALUES(7007, 'ADAMS', 'CLERK', 7003,  
+ date('1987-08-13'), 1100, 200, 40  
+);
+
+INSERT INTO emp_tab  
+VALUES(  
+ 7008, 'MILLER', 'CLERK', 7003,  
+ date('1982-01-23'), 1300, 200, 30  
+);
+
+DELETE FROM emp_tab WHERE empno=7005;
+
+
+
+INSERT INTO old_emp_tab 
+VALUES(7001, 'KING', 'PRESIDENT', null,  
+ date('1981-11-17'), 5000, 1000, 40);
+
+INSERT INTO old_emp_tab 
+VALUES(7002, 'CLARK', 'MANAGER', 7001,  
+ date('1981-06-09'), 2450, 500, 40
+);
+
+INSERT INTO old_emp_tab 
+VALUES(7003, 'JONES', 'MANAGER', 7001,  
+ date('1981-04-02'),2975, 500, 30
+);
+
+INSERT INTO old_emp_tab
+ VALUES(7004, 'SCOTT', 'ANALYST', 7002,  
+ date('1987-08-13'), 3000, 300, 70
+);
+
+INSERT INTO old_emp_tab 
+VALUES(7005, 'FORD', 'ANALYST', 7002,  
+date('1981-12-03'),3000, 300, 30
+);
+
+INSERT INTO old_emp_tab
+ VALUES(7006, 'SMITH', 'CLERK', 7003,  
+ date('1980-12-17'),800, 200, 30
+);
+
+INSERT INTO old_emp_tab 
+VALUES(7007, 'ADAMS', 'CLERK', 7003,  
+ date('1987-08-13'), 1100, 200, 40  
+);
+
+INSERT INTO old_emp_tab  
+VALUES(  
+ 7008, 'MILLER', 'CLERK', 7003,  
+ date('1982-01-23'), 1300, 200, 30  
+);
+
+
+
+-- SQLite
+INSERT INTO USER ("ID", "NAME")
+VALUES (4, "DRI");
+   
+select * from dept_tab;
+-- SQLite
+SELECT * FROM emp_tab;
